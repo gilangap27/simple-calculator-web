@@ -6,6 +6,7 @@ const output = document.querySelector('.output');
 let out = '';
 let cekMin = true;
 let cekOperator;
+let hasilHitung = null;
 
 //Memberi Event
 input.addEventListener('click', function(e) {
@@ -14,12 +15,6 @@ input.addEventListener('click', function(e) {
         out += e.target.textContent;
         cekMin = false;
 
-    } else if (e.target.textContent == 'C') {
-        out = '';
-
-    } else if (e.target.textContent == 'DEL') {
-        out = out.slice(0, -1);
-
     } else if (e.target.className == 'operator') {
         const cek = /\d/;
 
@@ -27,28 +22,66 @@ input.addEventListener('click', function(e) {
             cekOperator = out.substr(out.length - 1);
         }
 
-        if(e.target.textContent != '-' && cekMin == true){
+        if (e.target.textContent == 'C') {
             out = '';
-        } else {
 
+        } else if (e.target.textContent == 'DEL' && hasilHitung != null) {
+            out = '';
+
+        } else if (e.target.textContent == 'DEL') {
+            out = out.slice(0, -1);
+
+        } else if (e.target.textContent == '÷') {
             if (cek.test(cekOperator)) {
-                out += e.target.textContent;
+                    out += '/';
+
+                } else {
+                    let temp = out.split('');
+                    temp.pop();
+                    temp.push(e.target.textContent);
+                    let hasil = temp.join('');
+                    out = hasil;
+
+                }
+
+        } else if (e.target.textContent == 'x') {
+            if (cek.test(cekOperator)) {
+                    out += '*';
+
+                } else {
+                    let temp = out.split('');
+                    temp.pop();
+                    temp.push(e.target.textContent);
+                    let hasil = temp.join('');
+                    out = hasil;
+
+                }
+
+        } else {
+            if(e.target.textContent != '-' && cekMin == true){
+                out = '';
 
             } else {
-                let temp = out.split('');
-                temp.pop();
-                temp.push(e.target.textContent);
-                let hasil = temp.join('');
-                out = hasil;
+
+                if (cek.test(cekOperator)) {
+                    out += e.target.textContent;
+
+                } else {
+                    let temp = out.split('');
+                    temp.pop();
+                    temp.push(e.target.textContent);
+                    let hasil = temp.join('');
+                    out = hasil;
+
+                }
 
             }
-
         }
 
 
     } else if (e.target.className == 'hasil') {
-        let hasil = eval(out);
-        out = hasil;
+        hasilHitung = eval(out);
+        out = hasilHitung;
 
     }
 
