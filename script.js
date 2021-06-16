@@ -4,7 +4,10 @@ const input = document.querySelector('.input');
 const output = document.querySelector('.output');
 
 let out = '', angka = '';
-let bil1 = 0, bil2 = 0, operator = 0;
+let bil1 = [];
+let bil2 = [];
+let operator = [];
+let betul = true;
 
 input.addEventListener('click', function(e){
 	if(e.target.className == 'angka'){
@@ -14,42 +17,31 @@ input.addEventListener('click', function(e){
 		out = '';
 	} 
 	else if(e.target.className == 'operator'){
-		if(bil1 == 0){
-			bil1 = Number(angka);
+
+		out += ' '+e.target.textContent+' ';
+
+		if(betul == true){
+			bil1.push(Number(angka));
 			angka = 0;
-		} else if(bil2 == 0){
-			bil2 = Number(angka);
+			betul = false;
+		} else if(betul == false){
+			bil2.push(Number(angka));
 			angka = 0;
+			betul = true;
 		}
 
 		if(e.target.textContent == ':'){
-			operator = ':';
+			operator.push(':');
 		} else if(e.target.textContent == 'x'){
-			operator = 'x';
+			operator.push('x');
 		} else if(e.target.textContent == '-'){
-			operator = '-';
+			operator.push('-');
 		} else if(e.target.textContent == '+'){
-			operator = '+';
+			operator.push('+');
 		} else if(e.target.textContent == '='){
-			switch (operator) {
-				case ':':
-					hasil = bil1/bil2;
-					break;
-				case 'x':
-					hasil = bil1*bil2;
-					break;
-				case '-':
-					hasil = bil1-bil2;
-					break;
-				case '+':
-					hasil = bil1+bil2;
-					break;
-			}
-
+			
 			out = hasil;
 		} 
-
-		out += ' '+e.target.textContent+' ';
 	} 
 	output.textContent = out;
 })
