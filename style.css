@@ -14,6 +14,7 @@ body {
 	padding: 20px;
 	background-color: #363636;
 	margin: 0 auto;
+	border-radius: 20px;
 }
 .output {
 	margin: 10px auto;
@@ -33,7 +34,7 @@ body {
 	justify-content: center;
 	flex-wrap: wrap;
 }
-.btn {
+ul li {
 	width: 80px;
 	height: 80px;
 	display: flex;
@@ -47,7 +48,7 @@ body {
 	font-weight: bold;
 	border-radius: 10px;
 }
-.btn:hover {
+ul li:hover {
 	cursor: pointer;
 	opacity: 0.8;
 }
