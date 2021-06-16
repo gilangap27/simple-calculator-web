@@ -12,10 +12,12 @@ input.addEventListener('click', function(e){
 		inp += e.target.textContent;
 	} else if(e.target.textContent == 'C'){
 		out = '';
+	} else if(e.target.textContent == 'DEL'){
+		out = out.slice(0, -1);
 	} else if(e.target.className == 'operator'){
 		if(e.target.textContent == '÷'){
-			out += '/';
-			inp += e.target.textContent; 
+			inp += '/';
+			out += e.target.textContent; 
 		} else if (e.target.textContent == 'x'){
 			inp += '*';
 			out += e.target.textContent; 
