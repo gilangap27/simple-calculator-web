@@ -25,37 +25,12 @@ input.addEventListener('click', function(e) {
         if (e.target.textContent == 'C') {
             out = '';
 
-        } else if (e.target.textContent == 'DEL' && hasilHitung != null) {
-            out = '';
-
-        } else if (e.target.textContent == 'DEL') {
+        } else if (e.target.textContent == 'DEL' && hasilHitung == null) {
             out = out.slice(0, -1);
 
-        } else if (e.target.textContent == '÷') {
-            if (cek.test(cekOperator)) {
-                    out += '/';
-
-                } else {
-                    let temp = out.split('');
-                    temp.pop();
-                    temp.push(e.target.textContent);
-                    let hasil = temp.join('');
-                    out = hasil;
-
-                }
-
-        } else if (e.target.textContent == 'x') {
-            if (cek.test(cekOperator)) {
-                    out += '*';
-
-                } else {
-                    let temp = out.split('');
-                    temp.pop();
-                    temp.push(e.target.textContent);
-                    let hasil = temp.join('');
-                    out = hasil;
-
-                }
+        } else if (e.target.textContent == 'DEL' && hasilHitung != null) {
+            out = '';
+            hasilHitung = null;
 
         } else {
             if(e.target.textContent != '-' && cekMin == true){
@@ -82,7 +57,6 @@ input.addEventListener('click', function(e) {
     } else if (e.target.className == 'hasil') {
         hasilHitung = eval(out);
         out = hasilHitung;
-
     }
 
     output.textContent = out;
