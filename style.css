@@ -28,27 +28,20 @@ body {
 	display: flex;
 	justify-content: flex-end;
 	align-items: center;
+	overflow: hidden;
 }
-.input ul {
+table {
 	display: flex;
 	justify-content: center;
-	flex-wrap: wrap;
 }
-ul li {
-	width: 80px;
-	height: 80px;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	margin-left: 10px;
-	margin-bottom: 10px;
-	background-color: #F0EEEE;
-	color: #464646;
+th {
 	font-size: 40px;
 	font-weight: bold;
-	border-radius: 10px;
+	width: 80px;
+	height: 80px;
+	border: 1px solid #ccc;
 }
-ul li:hover {
+th:hover {
 	cursor: pointer;
-	opacity: 0.8;
+	opacity: 0.5;
 }
