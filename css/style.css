@@ -49,3 +49,22 @@ th:hover {
 	cursor: pointer;
 	opacity: 0.5;
 }
+
+
+@media screen and (max-width: 1028px) {
+	.container {
+		width: 50%;
+	}
+}
+
+@media screen and (max-width: 850px) {
+	.container {
+		width: 70%;
+	}
+}
+
+@media screen and (max-width: 600px) {
+	.container {
+		width: 100%;
+	}
+}
