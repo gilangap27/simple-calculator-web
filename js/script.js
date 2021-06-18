@@ -14,16 +14,20 @@ input.addEventListener('click', function(e) {
     if (e.target.className == 'angka') {
         out += e.target.textContent;
         cekMin = false;
+        hasilHitung = null;
 
+    } else if (e.target.textContent != '-' && cekMin == true && out == '') {
+        out = '';
     } else if (e.target.className == 'operator') {
         const cek = /\d/;
 
-        if(out.length > 1){
+        if (out.length > 1) {
             cekOperator = out.substr(out.length - 1);
         }
 
         if (e.target.textContent == 'C') {
             out = '';
+            cekMin = true;
 
         } else if (e.target.textContent == 'DEL' && hasilHitung == null) {
             out = out.slice(0, -1);
@@ -31,9 +35,9 @@ input.addEventListener('click', function(e) {
         } else if (e.target.textContent == 'DEL' && hasilHitung != null) {
             out = '';
             hasilHitung = null;
-
+            cekMin = true;
         } else {
-            if(e.target.textContent != '-' && cekMin == true){
+            if (e.target.textContent != '-' && cekMin == true) {
                 out = '';
 
             } else {
@@ -57,6 +61,7 @@ input.addEventListener('click', function(e) {
     } else if (e.target.className == 'hasil') {
         hasilHitung = eval(out);
         out = hasilHitung;
+        cekMin = false
     }
 
     output.textContent = out;
